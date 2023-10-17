@@ -46,6 +46,9 @@ The most innovative aspect of our app is its reliance on mobile device sensors a
 
 For testing, we are developing the app using Android Studio and will be conducting tests on Android Virtual Devices (AVD). All team members can access AVD through Android Studio, which will allow us to ensure the app's compatibility across different Android devices and versions.
 
+## Wireframe
+![Screenshot 2023-10-14 at 2 48 48 PM](https://github.com/Keemeeone/MorningRecovery/assets/112414685/8926ef9f-4df8-416e-a652-83fd4e6efa01)
+
 ## Milestones
 
 **October 30:**
