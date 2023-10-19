@@ -28,7 +28,7 @@ Some similar apps in the market include "Math Alarm Clock" and "Puzzle Alarm Clo
 **Mobile Device Side:**
 
 - **Alarm Interface:** Manages the alarm functionality, including setting, managing, and triggering alarms.
-- **Activity Selection:** Allows users to choose the type of activity they need to perform to disable the alarm (e.g., solving a puzzle, shaking the phone).
+- **Activity Selection:** Allows users to choose the type of activity(and level of activity) they need to perform to disable the alarm (e.g., solving a puzzle, or solving quiz).
 
 **Server-Side:**
 
@@ -40,7 +40,7 @@ Some similar apps in the market include "Math Alarm Clock" and "Puzzle Alarm Clo
 
 ### Innovation
 
-The most innovative aspect of our app is its reliance on mobile device sensors and features, such as the accelerometer or gyroscope, to provide a unique and immersive user experience.
+The most innovative aspect of our app is its reliance on mobile device sensors and features, such as the accelerometer, to provide a unique and immersive user experience.
 
 ### Testing Devices
 
