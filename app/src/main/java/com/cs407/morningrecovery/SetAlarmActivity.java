@@ -2,8 +2,11 @@ package com.cs407.morningrecovery;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 public class SetAlarmActivity extends AppCompatActivity {
@@ -40,5 +43,18 @@ public class SetAlarmActivity extends AppCompatActivity {
         ArrayAdapter<String> adapterAmPm = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, amPmOptions);
         adapterAmPm.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAmPm.setAdapter(adapterAmPm);
+
+        // Find the "CANCEL" button by its ID
+        Button cancelButton = findViewById(R.id.btn_cancel);
+
+        // Add an OnClickListener to the "CANCEL" button
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an intent to return to MainActivity
+                Intent intent = new Intent(SetAlarmActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
