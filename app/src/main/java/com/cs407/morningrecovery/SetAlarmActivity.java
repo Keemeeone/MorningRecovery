@@ -20,6 +20,14 @@ public class SetAlarmActivity extends AppCompatActivity {
         Spinner spinnerMinutes = findViewById(R.id.spinner_minutes);
         Spinner spinnerAmPm = findViewById(R.id.spinner_am_pm);
 
+        Spinner spinnerQuizType = findViewById(R.id.spinner_quiz_type);
+
+        // Populate the quiz type spinner with the "Math" option.
+        String[] quizTypes = {"Math"}; // Add any other quiz types if necessary.
+        ArrayAdapter<String> adapterQuizType = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, quizTypes);
+        adapterQuizType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerQuizType.setAdapter(adapterQuizType);
+
         // Populate the hours spinner (1-12 for standard time format).
         String[] hours = new String[12];
         for (int i = 0; i < hours.length; i++) {
