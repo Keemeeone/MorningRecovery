@@ -12,19 +12,20 @@
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+        <Button
+            android:id="@+id/cancel_btn"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
             android:layout_weight="1"
-            android:text="Cancel"
-            android:gravity="center"/>
+            android:text="Cancel" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+        <Button
+            android:id="@+id/save_btn"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
             android:layout_weight="1"
-            android:text="Save"
-            android:gravity="center"/>
+            android:text="Save" />
+
     </LinearLayout>
 
     <!-- Divider -->
