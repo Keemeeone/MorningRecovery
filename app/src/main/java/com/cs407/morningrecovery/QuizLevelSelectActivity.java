@@ -14,6 +14,7 @@ public class QuizLevelSelectActivity extends Activity {
 
         // CUSTOM 버튼에 대한 참조를 가져옵니다.
         Button customButton = findViewById(R.id.custombutton);
+        Button cancelButton = findViewById(R.id.quizselectCancelbutton);
 
         // CUSTOM 버튼에 클릭 리스너를 설정합니다.
         customButton.setOnClickListener(new View.OnClickListener() {
@@ -21,6 +22,14 @@ public class QuizLevelSelectActivity extends Activity {
             public void onClick(View v) {
                 // Intent를 사용하여 CustomQuizActivity를 시작합니다.
                 Intent intent = new Intent(QuizLevelSelectActivity.this, CustomQuizActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(QuizLevelSelectActivity.this, SetAlarmActivity.class);
                 startActivity(intent);
             }
         });
