@@ -62,7 +62,8 @@ public class SetAlarmActivity extends AppCompatActivity {
         quizType_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SetAlarmActivity.this,)
+                Intent intent = new Intent(SetAlarmActivity.this, QuizLevelSelectActivity.class);
+                startActivity(intent);
             }
         });
 
