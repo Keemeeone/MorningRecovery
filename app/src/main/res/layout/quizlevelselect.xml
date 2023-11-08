@@ -52,7 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Button
-        android:id="@+id/custombutton"
+        android:id="@+id/mediumbutton"
         android:layout_width="237dp"
         android:layout_height="54dp"
         android:layout_marginStart="87dp"
@@ -75,10 +75,10 @@
         android:text="HARD"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/custombutton" />
+        app:layout_constraintTop_toBottomOf="@+id/mediumbutton" />
 
     <Button
-        android:id="@+id/mediumbutton"
+        android:id="@+id/custombutton"
         android:layout_width="237dp"
         android:layout_height="54dp"
         android:layout_marginStart="87dp"
