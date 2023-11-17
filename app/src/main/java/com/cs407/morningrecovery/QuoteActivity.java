@@ -2,7 +2,9 @@ package com.cs407.morningrecovery;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -24,10 +26,19 @@ public class QuoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quote);
 
+        Button doneBtn = findViewById(R.id.doneBtn);
         quoteTextView = findViewById(R.id.quoteTextView);
 
         // Set a random quote initially
         setRandomQuote();
+
+        doneBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(QuoteActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setRandomQuote() {
