@@ -17,7 +17,6 @@ public class QuizActivity extends AppCompatActivity {
     private Button buttonSubmit;
     private TextView textViewProblem;
 
-    private EditText testLevel;
 
 
     private HashMap<String, String> easy = new HashMap<>();
@@ -39,14 +38,14 @@ public class QuizActivity extends AppCompatActivity {
     public void createMedium(){
         medium.put("18 + 88", "106");
         medium.put("2 * 29", "58");
-        medium.put("320 - 500", "180");
+        medium.put("500 - 320", "180");
         medium.put("25 * 8", "200");
     }
 
     public void createHard(){
         hard.put("240 + 318", "558");
         hard.put("12 * 36", "432");
-        hard.put("173 - 289", "-116");
+        hard.put("289 - 173", "116");
         hard.put("86 * 45", "3870");
     }
 
@@ -93,18 +92,15 @@ public class QuizActivity extends AppCompatActivity {
         editTextAnswer = findViewById(R.id.editTextAnswer);
         buttonSubmit = findViewById(R.id.buttonSubmit);
 
-        testLevel = findViewById(R.id.levelSelc);
-
-        textViewProblem.setText("432 + 145 = ?");
+//        textViewProblem.setText("432 + 145 = ?");
 
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int selectLevel = Integer.parseInt(testLevel.getText().toString());
-                showQuiz(selectLevel);
+                showQuiz(quizLevel);
                 try {
                     int userAnswer = Integer.parseInt(editTextAnswer.getText().toString());
-                    int answer;
+                    int answer = 0;
                     if(quizLevel == 1){
                         answer = Integer.parseInt(easy.get(problem));
                     }else if(quizLevel == 2){
