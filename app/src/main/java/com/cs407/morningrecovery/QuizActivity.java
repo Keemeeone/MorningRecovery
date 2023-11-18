@@ -14,7 +14,6 @@ public class QuizActivity extends AppCompatActivity {
     private EditText editTextAnswer;
     private Button buttonSubmit;
     private TextView textViewProblem;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
