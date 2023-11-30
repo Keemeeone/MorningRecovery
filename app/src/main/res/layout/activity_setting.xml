@@ -12,19 +12,27 @@
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/cancel_btn"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
             android:layout_weight="1"
+            android:background="@drawable/buttons"
             android:text="Cancel"
-            android:gravity="center"/>
+            android:textColor="#fff"
+            android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/save_btn"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="30dp"
             android:layout_weight="1"
+            android:background="@drawable/buttons"
             android:text="Save"
-            android:gravity="center"/>
+            android:textColor="#fff"
+            android:textStyle="bold" />
+
     </LinearLayout>
 
     <!-- Divider -->
@@ -36,106 +44,76 @@
         android:layout_marginBottom="8dp"/>
 
     <!-- Alarm Volume -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingVertical="8dp">
-
-        <TextView
-            android:id="@+id/alarmVolumeLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alarm Volume"
-            android:textSize="16sp" />
-
-        <SeekBar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_toRightOf="@id/alarmVolumeLabel" />
-    </RelativeLayout>
 
     <!-- Alarm Sound -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingVertical="8dp">
-
-        <TextView
-            android:id="@+id/alarmSoundLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alarm Sound"
-            android:textSize="16sp" />
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="100dp"
-            android:layout_toRightOf="@id/alarmSoundLabel"
-            android:src="@drawable/volume" /> <!-- You'll need to provide your own icon here -->
-    </RelativeLayout>
 
     <!-- Quote Enable/Disable -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
         android:paddingVertical="8dp">
 
         <TextView
             android:id="@+id/quoteLabel"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Quote Enable/Disable"
-            android:textSize="16sp" />
+            android:layout_height="52dp"
+            android:text="Quote"
+            android:textSize="34sp" />
 
-        <Switch
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/quote"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginLeft="50dp"
+            android:layout_marginStart="180dp"
+            android:layout_marginLeft="100dp"
             android:layout_toRightOf="@id/quoteLabel" />
     </RelativeLayout>
 
     <!-- Quiz Enable/Disable -->
+
+    <!-- Night Mode -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:paddingVertical="8dp">
 
         <TextView
             android:id="@+id/quizLabel"
             android:layout_width="wrap_content"
             android:layout_height="46dp"
-            android:text="Quiz Enable/Disable"
+            android:text="Quiz"
             android:textAlignment="center"
-            android:textSize="16sp" />
+            android:textSize="34sp" />
 
-        <Switch
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/quiz"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="205dp"
             android:layout_toRightOf="@id/quizLabel" />
     </RelativeLayout>
 
-    <!-- Night Mode -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:paddingVertical="8dp">
 
         <TextView
             android:id="@+id/nightModeLabel"
-            android:layout_width="130dp"
-            android:layout_height="48dp"
-            android:text="Night Mode"
-            android:textAlignment="center"
-            android:textSize="16sp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Night/Day Mode"
+            android:textAlignment="textStart"
+            android:textSize="34sp" />
 
-        <Switch
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/nightMode"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="30dp"
             android:layout_toRightOf="@id/nightModeLabel" />
     </RelativeLayout>
 

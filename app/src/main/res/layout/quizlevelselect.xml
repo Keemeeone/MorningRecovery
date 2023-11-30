@@ -38,7 +38,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quizSelectTitle" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/easybutton"
         android:layout_width="237dp"
         android:layout_height="54dp"
@@ -46,25 +46,31 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="87dp"
         android:layout_weight="1"
+        android:background="@drawable/buttons"
         android:text="EASY"
+        android:textColor="#fff"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <Button
-        android:id="@+id/custombutton"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/mediumbutton"
         android:layout_width="237dp"
         android:layout_height="54dp"
         android:layout_marginStart="87dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="87dp"
         android:layout_weight="1"
+        android:background="@drawable/buttons"
         android:text="MEDIUM"
+        android:textColor="#fff"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/easybutton" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/hardbutton"
         android:layout_width="237dp"
         android:layout_height="54dp"
@@ -72,13 +78,16 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="87dp"
         android:layout_weight="1"
+        android:background="@drawable/buttons"
         android:text="HARD"
+        android:textColor="#fff"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/custombutton" />
+        app:layout_constraintTop_toBottomOf="@+id/mediumbutton" />
 
-    <Button
-        android:id="@+id/mediumbutton"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/custombutton"
         android:layout_width="237dp"
         android:layout_height="54dp"
         android:layout_marginStart="87dp"
@@ -86,11 +95,31 @@
         android:layout_marginEnd="87dp"
         android:layout_marginBottom="152dp"
         android:layout_weight="1"
+        android:background="@drawable/buttons"
         android:text="CUSTOM"
+        android:textColor="#fff"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hardbutton" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/quizselectCancelbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="305dp"
+        android:layout_marginBottom="47dp"
+        android:background="@drawable/buttons"
+        android:text="Cancel"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/quizSelectTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -32,17 +32,19 @@
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/doneBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button2"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/doneBtn"
         android:layout_width="141dp"
         android:layout_height="0dp"
         android:layout_marginBottom="155dp"
+        android:background="@drawable/buttons"
         android:text="Done"
+        android:textColor="#fff"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

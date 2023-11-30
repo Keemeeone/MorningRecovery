@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
         adapter = new AlarmListAdapter(this, alarmStrings);
         listView.setAdapter(adapter);
 
+        Button setButton = findViewById(R.id.setting_btn);
+        Button test = findViewById(R.id.edit_btn);
+
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,6 +60,22 @@ public class MainActivity extends AppCompatActivity {
                 Alarm selectedAlarm = alarms.get(position);
                 deleteAlarm(selectedAlarm.getId());
                 return true;
+            }
+        });
+
+        setButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Setting.class);
+                startActivity(intent);
+            }
+        });
+
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, QuizActivity.class);
+                startActivity(intent);
             }
         });
     }

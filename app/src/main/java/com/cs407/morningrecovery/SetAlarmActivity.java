@@ -47,8 +47,6 @@ public class SetAlarmActivity extends AppCompatActivity {
         return pendingIntent != null;
     }
 
-
-
     private void populateSpinners() {
         // Populate the quiz type spinner with options.
         String[] quizTypes = {"Math"}; // Add other quiz types if necessary
@@ -99,6 +97,16 @@ public class SetAlarmActivity extends AppCompatActivity {
                 saveAlarm();
             }
         });
+
+        Button quizType_btn = findViewById(R.id.qType_btn);
+        quizType_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SetAlarmActivity.this, QuizLevelSelectActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void saveAlarm() {
