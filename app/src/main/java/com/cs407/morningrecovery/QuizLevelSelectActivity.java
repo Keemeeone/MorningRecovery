@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 
 public class QuizLevelSelectActivity extends Activity {
+    // variable for tracking quiz type/level
+    // it is used in QuizActivity
     public int level;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +37,13 @@ public class QuizLevelSelectActivity extends Activity {
             }
         });
 
+        // user select the type of quiz
         Button easyButton = findViewById(R.id.easybutton);
         Button mediumButton = findViewById(R.id.mediumbutton);
         Button hardButton = findViewById(R.id.hardbutton);
         Button cusmButton = findViewById(R.id.custombutton);
 
+        // actions when each button get clicked
         easyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,14 +68,12 @@ public class QuizLevelSelectActivity extends Activity {
             }
         });
 
-        hardButton.setOnClickListener(new View.OnClickListener() {
+        cusmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Set the level to 3 when Hard button is clicked
                 level = 4;
             }
         });
-
-
     }
 }

@@ -13,21 +13,23 @@ import java.util.HashMap;
 
 public class QuizActivity extends AppCompatActivity {
 
+
     private EditText editTextAnswer;
     private Button buttonSubmit;
     private TextView textViewProblem;
 
 
-
     private HashMap<String, String> easy = new HashMap<>();
     private HashMap<String, String> medium = new HashMap<>();
     private HashMap<String, String> hard = new HashMap<>();
-    private HashMap<String, String> custom = new HashMap<>();
 
     QuizLevelSelectActivity getLevel = new QuizLevelSelectActivity();
+    CustomQuizActivity getCustom = new CustomQuizActivity();
     int quizLevel = getLevel.level;
+    HashMap<String, String> custom = getCustom.customQuestion;
     String problem;
 
+    // Quiz creator. called by createQuiz() method
     public void createEasy(){
         easy.put("25 + 7" , "32");
         easy.put("7 * 9" , "63");
@@ -49,11 +51,9 @@ public class QuizActivity extends AppCompatActivity {
         hard.put("86 * 45", "3870");
     }
 
-
-
-
-    public void showQuiz(int quizLevel){
-        // e = 1, m = 2, h = 3
+    // create quiz and set the problem
+    // 1 : easy, 2 : medium, 3 : hard, 4 : custom
+    public void createQuiz(int quizLevel){
         if(quizLevel == 1){
             createEasy();
             for (String key : easy.keySet()) {
@@ -62,7 +62,6 @@ public class QuizActivity extends AppCompatActivity {
                 problem = key;
                 textViewProblem.setText(key + " = ?");
             }
-
         }else if(quizLevel == 2){
             createMedium();
             for (String key : medium.keySet()) {
@@ -71,10 +70,16 @@ public class QuizActivity extends AppCompatActivity {
                 problem = key;
                 textViewProblem.setText(key + " = ?");
             }
-
         }else if(quizLevel == 3){
             createHard();
             for (String key : hard.keySet()) {
+                //("Key: " + key + ", Value: " + easy.get(key));
+                // quiz print out
+                problem = key;
+                textViewProblem.setText(key + " = ?");
+            }
+        }else{
+            for (String key : custom.keySet()) {
                 //("Key: " + key + ", Value: " + easy.get(key));
                 // quiz print out
                 problem = key;
@@ -92,14 +97,12 @@ public class QuizActivity extends AppCompatActivity {
         editTextAnswer = findViewById(R.id.editTextAnswer);
         buttonSubmit = findViewById(R.id.buttonSubmit);
 
-//        textViewProblem.setText("432 + 145 = ?");
-
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showQuiz(quizLevel);
+                createQuiz(quizLevel);
                 try {
-                    int userAnswer = Integer.parseInt(editTextAnswer.getText().toString());
+                    // check the answer
                     int answer = 0;
                     if(quizLevel == 1){
                         answer = Integer.parseInt(easy.get(problem));
@@ -107,11 +110,16 @@ public class QuizActivity extends AppCompatActivity {
                         answer = Integer.parseInt(medium.get(problem));
                     }else if(quizLevel == 3){
                         answer = Integer.parseInt(hard.get(problem));
+                    }else{
+                        answer = Integer.parseInt(custom.get(problem));
                     }
+                    int userAnswer = Integer.parseInt(editTextAnswer.getText().toString());
                     if (userAnswer == answer) {
                         Toast.makeText(QuizActivity.this, "Correct!", Toast.LENGTH_LONG).show();
+                        // TODO : move to quote page
                     } else {
                         Toast.makeText(QuizActivity.this, "Incorrect, try again!", Toast.LENGTH_LONG).show();
+                        // do nothing?
                     }
                 } catch (NumberFormatException e) {
                     Toast.makeText(QuizActivity.this, "Please enter a number.", Toast.LENGTH_LONG).show();
