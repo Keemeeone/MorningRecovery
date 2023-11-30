@@ -39,45 +39,8 @@
         android:layout_marginBottom="8dp"/>
 
     <!-- Alarm Volume -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingVertical="8dp">
-
-        <TextView
-            android:id="@+id/alarmVolumeLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alarm Volume"
-            android:textSize="16sp" />
-
-        <SeekBar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_toRightOf="@id/alarmVolumeLabel" />
-    </RelativeLayout>
 
     <!-- Alarm Sound -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingVertical="8dp">
-
-        <TextView
-            android:id="@+id/alarmSoundLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alarm Sound"
-            android:textSize="16sp" />
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="100dp"
-            android:layout_toRightOf="@id/alarmSoundLabel"
-            android:src="@drawable/volume" /> <!-- You'll need to provide your own icon here -->
-    </RelativeLayout>
 
     <!-- Quote Enable/Disable -->
     <RelativeLayout
@@ -92,7 +55,8 @@
             android:text="Quote Enable/Disable"
             android:textSize="16sp" />
 
-        <Switch
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/quote"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="50dp"
@@ -116,7 +80,8 @@
             android:textAlignment="center"
             android:textSize="16sp" />
 
-        <Switch
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/quiz"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="50dp"
@@ -136,7 +101,8 @@
             android:textAlignment="center"
             android:textSize="16sp" />
 
-        <Switch
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/nightMode"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="50dp"
