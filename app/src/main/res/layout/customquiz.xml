@@ -29,8 +29,9 @@
         android:layout_marginTop="85dp"
         android:layout_marginEnd="87dp"
         android:ems="10"
+        android:hint="Enter Question"
         android:inputType="text"
-        android:text="Enter Question"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/customQTitle" />
@@ -43,13 +44,14 @@
         android:layout_marginTop="33dp"
         android:layout_marginEnd="87dp"
         android:ems="10"
+        android:hint="Enter Answer"
         android:inputType="text"
-        android:text="Enter Answer"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionText" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -58,12 +60,13 @@
         android:layout_marginEnd="162dp"
         android:layout_marginBottom="12dp"
         android:text="Save"
+        android:background="@drawable/buttons"
         app:layout_constraintBottom_toTopOf="@+id/cancelbutton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/answerText" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/cancelbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -72,6 +75,7 @@
         android:layout_marginEnd="162dp"
         android:layout_marginBottom="170dp"
         android:text="Cancel"
+        android:background="@drawable/buttons"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
