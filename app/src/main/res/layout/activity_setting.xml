@@ -12,19 +12,21 @@
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/cancel_btn"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_weight="1"
-            android:text="Cancel" />
+            android:text="Cancel"
+            android:background="@drawable/buttons"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/save_btn"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_weight="1"
-            android:text="Save" />
+            android:text="Save"
+            android:background="@drawable/buttons"/>
 
     </LinearLayout>
 
@@ -94,11 +96,13 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="50dp"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="100dp"
             android:layout_toRightOf="@id/quoteLabel" />
     </RelativeLayout>
 
     <!-- Quiz Enable/Disable -->
+
+    <!-- Night Mode -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -119,7 +123,6 @@
             android:layout_toRightOf="@id/quizLabel" />
     </RelativeLayout>
 
-    <!-- Night Mode -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
 
     <!-- Top Cancel and Save Texts -->
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,9 +16,10 @@
         android:text="Cancel"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/buttons"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,7 +28,8 @@
         android:text="Save"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/buttons"/>
 
     <!-- "Add Alarm" Text centered between Cancel and Save -->
     <TextView
@@ -34,7 +37,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Alarm"
+        android:textAllCaps="true"
         android:textSize="26sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/btn_save"
         app:layout_constraintEnd_toStartOf="@+id/btn_save"
         app:layout_constraintStart_toEndOf="@+id/btn_cancel"
@@ -52,22 +57,27 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_save" />
 
     <!-- Time Setting Label -->
+
+    <!-- Time Setting Dropdowns -->
+
     <TextView
         android:id="@+id/tv_time_setting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="60dp"
         android:text="Time Setting"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
 
-    <!-- Time Setting Dropdowns -->
     <Spinner
         android:id="@+id/spinner_hours"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_width="102dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="90dp"
+        android:autofillHints="Hours"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_time_setting" />
 
@@ -83,30 +93,32 @@
 
     <Spinner
         android:id="@+id/spinner_minutes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="102dp"
+        android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="@+id/spinner_hours"
         app:layout_constraintEnd_toStartOf="@+id/spinner_am_pm"
         app:layout_constraintStart_toEndOf="@+id/colon" />
 
     <Spinner
         android:id="@+id/spinner_am_pm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="102dp"
+        android:layout_height="60dp"
         android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/spinner_hours"
         app:layout_constraintStart_toEndOf="@+id/spinner_minutes" />
 
     <!-- Quiz Type -->
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/qType_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="92dp"
         android:text="Quiz Type"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinner_hours" />
+        app:layout_constraintTop_toBottomOf="@id/spinner_hours"
+        android:background="@drawable/buttons"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
