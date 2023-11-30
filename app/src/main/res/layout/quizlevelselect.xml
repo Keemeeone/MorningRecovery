@@ -46,8 +46,10 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="87dp"
         android:layout_weight="1"
-        android:text="EASY"
         android:background="@drawable/buttons"
+        android:text="EASY"
+        android:textColor="#fff"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -60,8 +62,10 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="87dp"
         android:layout_weight="1"
-        android:text="MEDIUM"
         android:background="@drawable/buttons"
+        android:text="MEDIUM"
+        android:textColor="#fff"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/easybutton" />
@@ -74,10 +78,12 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="87dp"
         android:layout_weight="1"
+        android:background="@drawable/buttons"
         android:text="HARD"
+        android:textColor="#fff"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/buttons"
         app:layout_constraintTop_toBottomOf="@+id/mediumbutton" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -89,11 +95,13 @@
         android:layout_marginEnd="87dp"
         android:layout_marginBottom="152dp"
         android:layout_weight="1"
+        android:background="@drawable/buttons"
         android:text="CUSTOM"
+        android:textColor="#fff"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/buttons"
         app:layout_constraintTop_toBottomOf="@+id/hardbutton" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -104,8 +112,10 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="305dp"
         android:layout_marginBottom="47dp"
-        android:text="Cancel"
         android:background="@drawable/buttons"
+        android:text="Cancel"
+        android:textColor="#fff"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/quizSelectTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
