@@ -98,14 +98,14 @@ public class SetAlarmActivity extends AppCompatActivity {
             }
         });
 
-        Button quizType_btn = findViewById(R.id.qType_btn);
-        quizType_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SetAlarmActivity.this, QuizLevelSelectActivity.class);
-                startActivity(intent);
-            }
-        });
+//        Button quizType_btn = findViewById(R.id.qType_btn);
+//        quizType_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(SetAlarmActivity.this, QuizLevelSelectActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
     }
 
