@@ -3,19 +3,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.ContentValues;
-import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-
 import java.util.ArrayList;
 import java.util.List;
-
-// 기존에 이미 추가된 임포트 문들은 그대로 유지하면 됩니다.
-
-
-
 
 public class AlarmDbHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
@@ -58,7 +48,6 @@ public class AlarmDbHelper extends SQLiteOpenHelper {
         values.put(AlarmContract.AlarmEntry.COLUMN_NAME_AM_PM, alarm.getAmPm());
         values.put(AlarmContract.AlarmEntry.COLUMN_NAME_QUIZ_TYPE, alarm.getQuizType());
 
-        // 새로운 행의 ID를 반환합니다.
         return db.insert(AlarmContract.AlarmEntry.TABLE_NAME, null, values);
     }
 
@@ -92,7 +81,7 @@ public class AlarmDbHelper extends SQLiteOpenHelper {
             int amPmIndex = cursor.getColumnIndex(AlarmContract.AlarmEntry.COLUMN_NAME_AM_PM);
             int quizTypeIndex = cursor.getColumnIndex(AlarmContract.AlarmEntry.COLUMN_NAME_QUIZ_TYPE);
 
-            // 유효성 검사
+
             if (idIndex != -1 && hourIndex != -1 && minuteIndex != -1 && amPmIndex != -1 && quizTypeIndex != -1) {
                 do {
                     Alarm alarm = new Alarm(
@@ -110,7 +99,4 @@ public class AlarmDbHelper extends SQLiteOpenHelper {
 
         return alarmList;
     }
-
-
-
 }

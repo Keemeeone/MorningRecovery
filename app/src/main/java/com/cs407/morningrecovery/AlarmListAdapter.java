@@ -7,7 +7,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import java.util.List;
 
-
 public class AlarmListAdapter extends BaseAdapter {
     private Context context;
     private List<String> alarmStrings;
@@ -44,7 +43,7 @@ public class AlarmListAdapter extends BaseAdapter {
         return convertView;
     }
 
-    // 데이터 업데이트 메서드 추가
+    // data update method
     public void updateData(List<String> newAlarmStrings) {
         alarmStrings = newAlarmStrings;
         notifyDataSetChanged();

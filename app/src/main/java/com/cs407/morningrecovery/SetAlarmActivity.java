@@ -37,10 +37,17 @@ public class SetAlarmActivity extends AppCompatActivity {
 
         // Populate the spinners with options
         populateSpinners();
-
         // Set up the buttons
         setUpButtons();
     }
+
+    private boolean isAlarmScheduled() {
+        Intent intent = new Intent(this, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_NO_CREATE);
+        return pendingIntent != null;
+    }
+
+
 
     private void populateSpinners() {
         // Populate the quiz type spinner with options.
@@ -127,42 +134,33 @@ public class SetAlarmActivity extends AppCompatActivity {
     }
 
     private void scheduleAlarm(long alarmId, int hour, int minute) {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlarmReceiver.class);
+        intent.putExtra("ALARM_ID", alarmId); // 알람 ID 전달
 
-        try {
-            if (canSetExactAlarms()) {
-                // 기존 알람 설정 로직
+        int flags = PendingIntent.FLAG_UPDATE_CURRENT;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            flags |= PendingIntent.FLAG_IMMUTABLE;
+        }
+        PendingIntent alarmPendingIntent = PendingIntent.getBroadcast(this, (int) alarmId, intent, flags);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, minute);
+        calendar.set(Calendar.SECOND, 0);
+
+        if (alarmManager != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmPendingIntent);
             } else {
-                // 권한 요청
-                requestExactAlarmPermission();
+                alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmPendingIntent);
             }
-        } catch (SecurityException e) {
-            // SecurityException 처리
-            requestExactAlarmPermission();
         }
 
-        Intent intent = new Intent(this, AlarmReceiver.class);
-        intent.putExtra("ALARM_ID", alarmId);
-//
-//        // Android 12 (API 레벨 31) 이상을 대상으로 할 때 필요한 플래그
-//        int flags = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S ? PendingIntent.FLAG_IMMUTABLE : 0;
-//        PendingIntent alarmPendingIntent = PendingIntent.getBroadcast(this, 0, intent, flags);
-//
-//        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.setTimeInMillis(System.currentTimeMillis());
-//        calendar.set(Calendar.HOUR_OF_DAY, hour);
-//        calendar.set(Calendar.MINUTE, minute);
-//
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-//            alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmPendingIntent);
-//        } else {
-//            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmPendingIntent);
-//        }
-
-
-        // Notify the user that the alarm was set
         Toast.makeText(this, "Alarm set for " + hour + ":" + minute, Toast.LENGTH_SHORT).show();
     }
+
 
     private boolean canSetExactAlarms() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
@@ -175,12 +173,15 @@ public class SetAlarmActivity extends AppCompatActivity {
     private void cancelAlarm(int alarmId) {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, alarmId, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, alarmId, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
         if (alarmManager != null) {
             alarmManager.cancel(pendingIntent);
         }
+
+        // TODO: 여기에 데이터베이스에서 알람을 삭제하는 로직을 추가해야 할수도?
     }
+
 
     private void requestExactAlarmPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
@@ -188,6 +189,5 @@ public class SetAlarmActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
-
 
 }
