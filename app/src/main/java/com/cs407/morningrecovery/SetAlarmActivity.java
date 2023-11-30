@@ -8,18 +8,51 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.os.Build;
+import java.util.Calendar;
+import android.content.Context;
+import android.provider.Settings;
+
 
 public class SetAlarmActivity extends AppCompatActivity {
+
+    Spinner spinnerHours;
+    Spinner spinnerMinutes;
+    Spinner spinnerAmPm;
+    Spinner spinnerQuizType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_alarm);
 
-        Spinner spinnerHours = findViewById(R.id.spinner_hours);
-        Spinner spinnerMinutes = findViewById(R.id.spinner_minutes);
-        Spinner spinnerAmPm = findViewById(R.id.spinner_am_pm);
+        // Initialize the spinners
+        spinnerHours = findViewById(R.id.spinner_hours);
+        spinnerMinutes = findViewById(R.id.spinner_minutes);
+        spinnerAmPm = findViewById(R.id.spinner_am_pm);
+        spinnerQuizType = findViewById(R.id.spinner_quiz_type);
 
+        // Populate the spinners with options
+        populateSpinners();
+        // Set up the buttons
+        setUpButtons();
+    }
+
+    private boolean isAlarmScheduled() {
+        Intent intent = new Intent(this, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_NO_CREATE);
+        return pendingIntent != null;
+    }
+
+    private void populateSpinners() {
+        // Populate the quiz type spinner with options.
+        String[] quizTypes = {"Math"}; // Add other quiz types if necessary
+        ArrayAdapter<String> adapterQuizType = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, quizTypes);
+        adapterQuizType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerQuizType.setAdapter(adapterQuizType);
 
         // Populate the hours spinner (1-12 for standard time format).
         String[] hours = new String[12];
@@ -44,17 +77,24 @@ public class SetAlarmActivity extends AppCompatActivity {
         ArrayAdapter<String> adapterAmPm = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, amPmOptions);
         adapterAmPm.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerAmPm.setAdapter(adapterAmPm);
+    }
 
-        // Find the "CANCEL" button by its ID
+    private void setUpButtons() {
+        // Set up the 'Cancel' button
         Button cancelButton = findViewById(R.id.btn_cancel);
-
-        // Add an OnClickListener to the "CANCEL" button
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an intent to return to MainActivity
-                Intent intent = new Intent(SetAlarmActivity.this, MainActivity.class);
-                startActivity(intent);
+                finish(); // Close the activity
+            }
+        });
+
+        // Set up the 'Save' button
+        Button saveButton = findViewById(R.id.btn_save); // Replace with your actual 'Save' button ID
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveAlarm();
             }
         });
 
@@ -68,4 +108,94 @@ public class SetAlarmActivity extends AppCompatActivity {
         });
 
     }
+
+    private void saveAlarm() {
+        // Retrieve alarm details from the spinners
+        int hour = Integer.parseInt(spinnerHours.getSelectedItem().toString());
+        int minute = Integer.parseInt(spinnerMinutes.getSelectedItem().toString());
+        String amPm = spinnerAmPm.getSelectedItem().toString();
+        String quizType = spinnerQuizType.getSelectedItem().toString();
+
+        // Convert 12-hour time to 24-hour time if necessary
+        if ("PM".equals(amPm) && hour != 12) {
+            hour += 12;
+        } else if ("AM".equals(amPm) && hour == 12) {
+            hour = 0;
+        }
+
+        // Save the alarm details to the database
+        // Note: You will need to implement the insertAlarm method in your AlarmDbHelper class
+        AlarmDbHelper dbHelper = new AlarmDbHelper(this);
+        long alarmId = dbHelper.insertAlarm(new Alarm(0, hour, minute, amPm, quizType)); // Assuming the constructor matches the parameters
+
+        if (alarmId != -1) {
+            // Alarm was saved successfully
+            // Now schedule the alarm using the AlarmManager
+            // Note: You need to implement the scheduleAlarm method that schedules the alarm
+            scheduleAlarm(alarmId, hour, minute);
+        } else {
+            // Handle the error
+        }
+
+        // Return to the main activity
+        finish();
+    }
+
+    private void scheduleAlarm(long alarmId, int hour, int minute) {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlarmReceiver.class);
+        intent.putExtra("ALARM_ID", alarmId); // 알람 ID 전달
+
+        int flags = PendingIntent.FLAG_UPDATE_CURRENT;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            flags |= PendingIntent.FLAG_IMMUTABLE;
+        }
+        PendingIntent alarmPendingIntent = PendingIntent.getBroadcast(this, (int) alarmId, intent, flags);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, minute);
+        calendar.set(Calendar.SECOND, 0);
+
+        if (alarmManager != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmPendingIntent);
+            } else {
+                alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmPendingIntent);
+            }
+        }
+
+        Toast.makeText(this, "Alarm set for " + hour + ":" + minute, Toast.LENGTH_SHORT).show();
+    }
+
+
+    private boolean canSetExactAlarms() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            return alarmManager != null && alarmManager.canScheduleExactAlarms();
+        }
+        return true; // Android 12 이하 버전에서는 권한 확인 불필요
+    }
+
+    private void cancelAlarm(int alarmId) {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, alarmId, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+        if (alarmManager != null) {
+            alarmManager.cancel(pendingIntent);
+        }
+
+        // TODO: 여기에 데이터베이스에서 알람을 삭제하는 로직을 추가해야 할수도?
+    }
+
+
+    private void requestExactAlarmPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            Intent intent = new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM);
+            startActivity(intent);
+        }
+    }
+
 }
