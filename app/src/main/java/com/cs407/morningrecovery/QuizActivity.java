@@ -1,5 +1,6 @@
 package com.cs407.morningrecovery;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -87,6 +88,13 @@ public class QuizActivity extends AppCompatActivity {
             }
         }
     }
+    private void moveToQuotePage() {
+        Intent intent = new Intent(QuizActivity.this, QuoteActivity.class);
+        // You can pass any necessary data to the QuoteActivity using intent.putExtra if needed
+        startActivity(intent);
+        // Finish the current activity if you don't want the user to come back to the quiz after seeing the quote
+        finish();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +124,7 @@ public class QuizActivity extends AppCompatActivity {
                     int userAnswer = Integer.parseInt(editTextAnswer.getText().toString());
                     if (userAnswer == answer) {
                         Toast.makeText(QuizActivity.this, "Correct!", Toast.LENGTH_LONG).show();
-                        // TODO : move to quote page
+                        moveToQuotePage();
                     } else {
                         Toast.makeText(QuizActivity.this, "Incorrect, try again!", Toast.LENGTH_LONG).show();
                         // do nothing?
