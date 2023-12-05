@@ -18,7 +18,7 @@ import com.google.android.material.switchmaterial.SwitchMaterial;
 public class Setting extends AppCompatActivity {
 
     static final String PREF_NAME = "MyPrefs";
-    private static final String KEY_QUIZ_ENABLED = "quiz_enabled";
+    static final String KEY_QUIZ_ENABLED = "quiz_enabled";
     static final String KEY_QUOTE_ENABLED = "quote_enabled";
 
     private boolean isQuizEnabled;

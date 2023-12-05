@@ -10,7 +10,7 @@ import android.widget.Toast;
 public class QuizLevelSelectActivity extends Activity {
     // variable for tracking quiz type/level
     // it is used in QuizActivity
-    public int level;
+    public static int level;
 
     private void moveToMainPage() {
         Intent intent = new Intent(QuizLevelSelectActivity.this, MainActivity.class);

@@ -17,7 +17,7 @@ public class CustomQuizActivity extends Activity {
     private EditText questionEditText;
     private EditText answerEditText;
     // it will be used in quizActivity
-    public HashMap<String, String> customQuestion = new HashMap<>();
+    public static HashMap<String, String> customQuestion = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +45,8 @@ public class CustomQuizActivity extends Activity {
                 String question = questionEditText.getText().toString();
                 String answer = answerEditText.getText().toString();
                 customQuestion.put(question, answer);
+                Intent intent = new Intent(CustomQuizActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }
