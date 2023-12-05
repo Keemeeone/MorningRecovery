@@ -1,29 +1,31 @@
 package com.cs407.morningrecovery;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 import java.util.List;
 
 public class AlarmListAdapter extends BaseAdapter {
     private Context context;
-    private List<String> alarmStrings;
+    private List<Alarm> alarms;
 
-    public AlarmListAdapter(Context context, List<String> alarmStrings) {
+    public AlarmListAdapter(Context context, List<Alarm> alarms) {
         this.context = context;
-        this.alarmStrings = alarmStrings;
+        this.alarms = alarms;
     }
 
     @Override
     public int getCount() {
-        return alarmStrings.size();
+        return alarms.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return alarmStrings.get(position);
+        return alarms.get(position);
     }
 
     @Override
@@ -34,18 +36,26 @@ public class AlarmListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_1, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.alarm_list_item, parent, false);
         }
 
-        TextView textView = convertView.findViewById(android.R.id.text1);
-        textView.setText(alarmStrings.get(position));
+        TextView textView = convertView.findViewById(R.id.alarmText);
+        Alarm alarm = alarms.get(position);
+        textView.setText(alarm.getHour() + ":" + alarm.getMinute() + " " + alarm.getAmPm() + " - " + alarm.getQuizType());
+
+        Button deleteButton = convertView.findViewById(R.id.deleteButton);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)context).deleteAlarm(alarm.getId());
+            }
+        });
 
         return convertView;
     }
 
-    // data update method
-    public void updateData(List<String> newAlarmStrings) {
-        alarmStrings = newAlarmStrings;
+    public void updateData(List<Alarm> newAlarms) {
+        alarms = newAlarms;
         notifyDataSetChanged();
     }
 }
