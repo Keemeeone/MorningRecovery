@@ -5,11 +5,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class QuizLevelSelectActivity extends Activity {
     // variable for tracking quiz type/level
     // it is used in QuizActivity
     public int level;
+
+    private void moveToMainPage() {
+        Intent intent = new Intent(QuizLevelSelectActivity.this, MainActivity.class);
+        // You can pass any necessary data to the QuoteActivity using intent.putExtra if needed
+        startActivity(intent);
+        // Finish the current activity if you don't want the user to come back to the quiz after seeing the quote
+        finish();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,16 +41,18 @@ public class QuizLevelSelectActivity extends Activity {
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                level = 4;
                 Intent intent = new Intent(QuizLevelSelectActivity.this, SetAlarmActivity.class);
                 startActivity(intent);
             }
         });
 
+
+
         // user select the type of quiz
         Button easyButton = findViewById(R.id.easybutton);
         Button mediumButton = findViewById(R.id.mediumbutton);
         Button hardButton = findViewById(R.id.hardbutton);
-        Button cusmButton = findViewById(R.id.custombutton);
 
         // actions when each button get clicked
         easyButton.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +60,8 @@ public class QuizLevelSelectActivity extends Activity {
             public void onClick(View v) {
                 // Set the level to 1 when Easy button is clicked
                 level = 1;
+                Toast.makeText(QuizLevelSelectActivity.this, "You select the easy one!", Toast.LENGTH_LONG).show();
+                moveToMainPage();
             }
         });
 
@@ -57,6 +70,8 @@ public class QuizLevelSelectActivity extends Activity {
             public void onClick(View v) {
                 // Set the level to 2 when Medium button is clicked
                 level = 2;
+                Toast.makeText(QuizLevelSelectActivity.this, "You select the medium one!", Toast.LENGTH_LONG).show();
+                moveToMainPage();
             }
         });
 
@@ -65,15 +80,13 @@ public class QuizLevelSelectActivity extends Activity {
             public void onClick(View v) {
                 // Set the level to 3 when Hard button is clicked
                 level = 3;
+                Toast.makeText(QuizLevelSelectActivity.this, "You select the hard one!", Toast.LENGTH_LONG).show();
+                moveToMainPage();
             }
         });
 
-        cusmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Set the level to 3 when Hard button is clicked
-                level = 4;
-            }
-        });
+
+
+
     }
 }
