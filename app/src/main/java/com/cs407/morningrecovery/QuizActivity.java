@@ -1,6 +1,12 @@
 package com.cs407.morningrecovery;
 
+
+import static com.cs407.morningrecovery.Setting.KEY_QUOTE_ENABLED;
+import static com.cs407.morningrecovery.Setting.PREF_NAME;
+
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -89,12 +95,22 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
     private void moveToQuotePage() {
-        Intent intent = new Intent(QuizActivity.this, QuoteActivity.class);
-        // You can pass any necessary data to the QuoteActivity using intent.putExtra if needed
-        startActivity(intent);
-        // Finish the current activity if you don't want the user to come back to the quiz after seeing the quote
-        finish();
+        SharedPreferences preferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        boolean isQuoteEnabled = preferences.getBoolean(KEY_QUOTE_ENABLED, true);
+
+        if (isQuoteEnabled) {
+            Intent intent = new Intent(QuizActivity.this, QuoteActivity.class);
+            // You can pass any necessary data to the QuoteActivity using intent.putExtra if needed
+            startActivity(intent);
+            // Finish the current activity if you don't want the user to come back to the quiz after seeing the quote
+            finish();
+        } else {
+            // Turn off the alarm or perform any other actions here
+            Toast.makeText(QuizActivity.this, "Alarm turned off", Toast.LENGTH_LONG).show();
+            // You may want to add logic to handle turning off the alarm
+        }
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

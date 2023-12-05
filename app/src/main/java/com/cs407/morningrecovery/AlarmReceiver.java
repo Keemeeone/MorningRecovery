@@ -11,12 +11,19 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        // Alarm sound get trigge.
+        // Alarm sound get trigger.
         playAlarmSound(context);
 
         // Alarm Message
         Toast.makeText(context, "Alarm Ringing!", Toast.LENGTH_SHORT).show();
+        Intent mainIntent = new Intent(context, QuizActivity.class);
+
+        // Set the flag to start a new task (if not already running)
+        mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(mainIntent);
+
     }
+
 
     private void playAlarmSound(Context context) {
         Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
