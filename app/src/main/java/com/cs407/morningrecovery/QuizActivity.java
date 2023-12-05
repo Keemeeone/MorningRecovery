@@ -20,7 +20,6 @@ import java.util.HashMap;
 
 public class QuizActivity extends AppCompatActivity {
 
-
     private EditText editTextAnswer;
     private Button buttonSubmit;
     private TextView textViewProblem;
@@ -30,10 +29,10 @@ public class QuizActivity extends AppCompatActivity {
     private HashMap<String, String> medium = new HashMap<>();
     private HashMap<String, String> hard = new HashMap<>();
 
-    QuizLevelSelectActivity getLevel = new QuizLevelSelectActivity();
+//    int getLevel = QuizLevelSelectActivity.level;
     CustomQuizActivity getCustom = new CustomQuizActivity();
-    int quizLevel = getLevel.level;
-    HashMap<String, String> custom = getCustom.customQuestion;
+    int quizLevel = QuizLevelSelectActivity.level;
+    HashMap<String, String> custom = CustomQuizActivity.customQuestion;
     String problem;
 
     // Quiz creator. called by createQuiz() method
@@ -68,6 +67,7 @@ public class QuizActivity extends AppCompatActivity {
                 // quiz print out
                 problem = key;
                 textViewProblem.setText(key + " = ?");
+                break;
             }
         }else if(quizLevel == 2){
             createMedium();
@@ -76,6 +76,7 @@ public class QuizActivity extends AppCompatActivity {
                 // quiz print out
                 problem = key;
                 textViewProblem.setText(key + " = ?");
+                break;
             }
         }else if(quizLevel == 3){
             createHard();
@@ -84,6 +85,7 @@ public class QuizActivity extends AppCompatActivity {
                 // quiz print out
                 problem = key;
                 textViewProblem.setText(key + " = ?");
+                break;
             }
         }else{
             for (String key : custom.keySet()) {
@@ -91,6 +93,7 @@ public class QuizActivity extends AppCompatActivity {
                 // quiz print out
                 problem = key;
                 textViewProblem.setText(key + " = ?");
+                break;
             }
         }
     }
@@ -107,7 +110,8 @@ public class QuizActivity extends AppCompatActivity {
         } else {
             // Turn off the alarm or perform any other actions here
             Toast.makeText(QuizActivity.this, "Alarm turned off", Toast.LENGTH_LONG).show();
-            // You may want to add logic to handle turning off the alarm
+            Intent intent = new Intent(QuizActivity.this, MainActivity.class);
+            startActivity(intent);
         }
     }
 
@@ -120,11 +124,11 @@ public class QuizActivity extends AppCompatActivity {
         textViewProblem = findViewById(R.id.textViewQuestion);
         editTextAnswer = findViewById(R.id.editTextAnswer);
         buttonSubmit = findViewById(R.id.buttonSubmit);
-
+        createQuiz(quizLevel);
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createQuiz(quizLevel);
+
                 try {
                     // check the answer
                     int answer = 0;
@@ -140,6 +144,7 @@ public class QuizActivity extends AppCompatActivity {
                     int userAnswer = Integer.parseInt(editTextAnswer.getText().toString());
                     if (userAnswer == answer) {
                         Toast.makeText(QuizActivity.this, "Correct!", Toast.LENGTH_LONG).show();
+                        AlarmReceiver.stopAlarmSound();
                         moveToQuotePage();
                     } else {
                         Toast.makeText(QuizActivity.this, "Incorrect, try again!", Toast.LENGTH_LONG).show();

@@ -1,6 +1,10 @@
 package com.cs407.morningrecovery;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.AlertDialog;
+import static com.cs407.morningrecovery.AlarmReceiver.alarmRing;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -48,8 +52,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
 
+
+    }
     @Override
     protected void onResume() {
         super.onResume();

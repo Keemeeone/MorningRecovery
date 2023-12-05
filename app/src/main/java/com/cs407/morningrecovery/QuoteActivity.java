@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.content.BroadcastReceiver;
+
 
 import java.util.Random;
 
@@ -35,6 +37,10 @@ public class QuoteActivity extends AppCompatActivity {
         doneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Send a broadcast to stop the alarm
+                AlarmReceiver.stopAlarmSound();
+
+                // Continue with your existing code
                 Intent intent = new Intent(QuoteActivity.this, MainActivity.class);
                 startActivity(intent);
             }
