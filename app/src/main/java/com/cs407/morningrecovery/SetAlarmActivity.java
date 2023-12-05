@@ -85,7 +85,9 @@ public class SetAlarmActivity extends AppCompatActivity {
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish(); // Close the activity
+                Intent intent = new Intent(SetAlarmActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Clears the activity stack
+                startActivity(intent);
             }
         });
 
@@ -133,8 +135,10 @@ public class SetAlarmActivity extends AppCompatActivity {
             // Now schedule the alarm using the AlarmManager
             // Note: You need to implement the scheduleAlarm method that schedules the alarm
             scheduleAlarm(alarmId, hour, minute);
+            Intent intent = new Intent(this, QuizLevelSelectActivity.class);
+            startActivity(intent);
         } else {
-            // Handle the error
+            Toast.makeText(this, "Error saving alarm", Toast.LENGTH_SHORT).show();
         }
 
         // Return to the main activity

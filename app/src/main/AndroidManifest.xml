@@ -9,7 +9,6 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
 
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -23,13 +22,6 @@
         <activity
             android:name=".QuoteActivity"
             android:exported="false" />
-<!--        -->
-<!--        <activity android:name=".AlarmActivity"-->
-<!--            android:launchMode="singleInstance"-->
-<!--            android:theme="@android:style/Theme.Dialog"-->
-<!--            android:excludeFromRecents="true">-->
-<!--        </activity>-->
-
         <activity
             android:name=".Setting"
             android:exported="true" />
@@ -38,7 +30,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -54,7 +45,4 @@
             </intent-filter>
         </activity>
     </application>
-
-
-
 </manifest>
