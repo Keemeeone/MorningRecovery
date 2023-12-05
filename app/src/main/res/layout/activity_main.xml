@@ -7,11 +7,25 @@
     android:background="#00934035"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="Alarms"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="60dp"
         android:layout_marginBottom="48dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/alarm_list_view"
@@ -25,25 +39,34 @@
             android:id="@+id/edit_btn"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:layout_weight="1"
             android:background="@drawable/buttons"
-            android:text="EDIT" />
+            android:text="EDIT"
+            android:textColor="@color/white" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/setting_btn"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:layout_weight="1"
             android:background="@drawable/buttons"
-            android:text="SETTING" />
+            android:text="SETTING"
+            android:textColor="@color/white" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/add_btn"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:layout_weight="1"
             android:background="@drawable/buttons"
-            android:text="ADD" />
+            android:text="ADD"
+            android:textColor="@color/white" />
     </LinearLayout>
 
     <ListView
