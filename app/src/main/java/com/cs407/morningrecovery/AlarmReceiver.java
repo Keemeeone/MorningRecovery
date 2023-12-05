@@ -11,7 +11,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        // Alarm sound get trigger.
+        // Alarm sound get trigge.
         playAlarmSound(context);
 
         // Alarm Message
