@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
-public class Setting extends AppCompatActivity {
+public class SettingActivity extends AppCompatActivity {
 
     static final String PREF_NAME = "MyPrefs";
     static final String KEY_QUIZ_ENABLED = "quiz_enabled";
@@ -34,7 +34,7 @@ public class Setting extends AppCompatActivity {
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Setting.this, MainActivity.class);
+                Intent intent = new Intent(SettingActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -83,13 +83,13 @@ public class Setting extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // Checking if the switch is turned on
                 if (!isChecked) {
-                    // Setting theme to night mode
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    buttonView.setText("Night Mode");
-                } else {
-                    // Setting theme to light theme
+                    // Setting theme to light mode
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                     buttonView.setText("Light Mode");
+                } else {
+                    // Setting theme to night theme
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    buttonView.setText("Night Mode");
                 }
             }
         });
@@ -102,8 +102,8 @@ public class Setting extends AppCompatActivity {
                 saveSwitchStates();
 
                 // Display a toast message
-                Toast.makeText(Setting.this, "Settings saved!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Setting.this, MainActivity.class);
+                Toast.makeText(SettingActivity.this, "Settings saved!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(SettingActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

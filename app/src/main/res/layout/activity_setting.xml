@@ -105,7 +105,7 @@
             android:id="@+id/nightModeLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Night/Day Mode"
+            android:text="Day/Night Mode"
             android:textAlignment="textStart"
             android:textSize="34sp" />
 

@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class QuizLevelSelectActivity extends Activity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class QuizLevelSelectActivity extends AppCompatActivity {
     // variable for tracking quiz type/level
     // it is used in QuizActivity
     public static int level;
@@ -22,7 +24,7 @@ public class QuizLevelSelectActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.quizlevelselect);
+        setContentView(R.layout.activity_quizlevelselect);
 
         // CUSTOM 버튼에 대한 참조를 가져옵니다.
         Button customButton = findViewById(R.id.custombutton);

@@ -157,10 +157,14 @@ public class SetAlarmActivity extends AppCompatActivity {
         PendingIntent alarmPendingIntent = PendingIntent.getBroadcast(this, (int) alarmId, intent, flags);
 
         Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
         calendar.set(Calendar.HOUR_OF_DAY, hour);
         calendar.set(Calendar.MINUTE, minute);
         calendar.set(Calendar.SECOND, 0);
+
+        if (calendar.getTimeInMillis() < System.currentTimeMillis()) {
+            // If the set time is before the current time, add a day to it
+            calendar.add(Calendar.DAY_OF_YEAR, 1);
+        }
 
         if (alarmManager != null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
