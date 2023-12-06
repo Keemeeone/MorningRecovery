@@ -99,16 +99,6 @@ public class SetAlarmActivity extends AppCompatActivity {
                 saveAlarm();
             }
         });
-
-//        Button quizType_btn = findViewById(R.id.qType_btn);
-//        quizType_btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(SetAlarmActivity.this, QuizLevelSelectActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-
     }
 
     private void saveAlarm() {
@@ -176,34 +166,4 @@ public class SetAlarmActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Alarm set for " + hour + ":" + minute, Toast.LENGTH_SHORT).show();
     }
-
-
-    private boolean canSetExactAlarms() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-            return alarmManager != null && alarmManager.canScheduleExactAlarms();
-        }
-        return true; // Android 12 이하 버전에서는 권한 확인 불필요
-    }
-
-    private void cancelAlarm(int alarmId) {
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(this, AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, alarmId, intent, PendingIntent.FLAG_CANCEL_CURRENT);
-
-        if (alarmManager != null) {
-            alarmManager.cancel(pendingIntent);
-        }
-
-        // TODO: 여기에 데이터베이스에서 알람을 삭제하는 로직을 추가해야 할수도?
-    }
-
-
-    private void requestExactAlarmPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            Intent intent = new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM);
-            startActivity(intent);
-        }
-    }
-
 }

@@ -41,7 +41,18 @@
             </intent-filter>
         </activity>
         <activity android:name=".SetAlarmActivity" />
-        <receiver android:name=".AlarmReceiver"/>
+        <receiver
+            android:name=".AlarmReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
         <activity android:name=".CustomQuizActivity"/>
         <activity android:name=".QuizActivity"/>
         <activity android:name=".QuizLevelSelectActivity"

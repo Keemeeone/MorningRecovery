@@ -16,5 +16,7 @@
         android:id="@+id/deleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="X" />
+        android:text="DELETE"
+        android:textColor="#fff"
+        android:textSize="14sp" />
 </LinearLayout>
