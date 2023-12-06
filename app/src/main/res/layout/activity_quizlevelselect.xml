@@ -115,6 +115,7 @@
         android:background="@drawable/buttons"
         android:text="Cancel"
         android:textColor="#fff"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/quizSelectTitle"
         app:layout_constraintEnd_toEndOf="parent"

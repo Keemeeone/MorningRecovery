@@ -6,13 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.HashMap;
 
-public class CustomQuizActivity extends Activity {
+public class CustomQuizActivity extends AppCompatActivity {
 
     private EditText questionEditText;
     private EditText answerEditText;
@@ -22,7 +21,7 @@ public class CustomQuizActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.customquiz);
+        setContentView(R.layout.activity_customquiz);
 
         Button cancelButton = findViewById(R.id.cancelbutton);
         cancelButton.setOnClickListener(new View.OnClickListener() {

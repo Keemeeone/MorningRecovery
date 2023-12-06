@@ -1,8 +1,8 @@
 package com.cs407.morningrecovery;
 
 
-import static com.cs407.morningrecovery.Setting.KEY_QUOTE_ENABLED;
-import static com.cs407.morningrecovery.Setting.PREF_NAME;
+import static com.cs407.morningrecovery.SettingActivity.KEY_QUOTE_ENABLED;
+import static com.cs407.morningrecovery.SettingActivity.PREF_NAME;
 
 import android.content.Context;
 import android.content.Intent;

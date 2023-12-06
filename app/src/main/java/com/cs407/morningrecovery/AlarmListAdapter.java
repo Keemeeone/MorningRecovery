@@ -36,7 +36,7 @@ public class AlarmListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.alarm_list_item, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.activity_alarmlist, parent, false);
         }
 
         TextView textView = convertView.findViewById(R.id.alarmText);

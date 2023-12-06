@@ -20,6 +20,7 @@
             android:background="@drawable/buttons"
             android:text="Cancel"
             android:textColor="#fff"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -31,6 +32,7 @@
             android:background="@drawable/buttons"
             android:text="Save"
             android:textColor="#fff"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -51,7 +53,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="32dp"
         android:paddingVertical="8dp">
 
         <TextView
@@ -76,7 +78,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="32dp"
         android:paddingVertical="8dp">
 
         <TextView
@@ -98,14 +100,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="32dp"
         android:paddingVertical="8dp">
 
         <TextView
             android:id="@+id/nightModeLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Night/Day Mode"
+            android:text="Day/Night Mode"
             android:textAlignment="textStart"
             android:textSize="34sp" />
 
