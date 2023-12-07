@@ -25,15 +25,17 @@ public class AlarmReceiver extends BroadcastReceiver {
         boolean isQuizEnabled = getQuizEnabledState(context);
         boolean isQuoteEnabled = getQuoteEnabledState(context);
 
-        if (isQuizEnabled && !isQuoteEnabled) {
+        if (isQuizEnabled) {
             Intent quizIntent = new Intent(context, QuizActivity.class);
             quizIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(quizIntent);
-        } else if (isQuoteEnabled && !isQuizEnabled) {
+        } else {
             Intent quoteIntent = new Intent(context, QuoteActivity.class);
             quoteIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(quoteIntent);
-        } else {
+        }
+
+        if (!isQuoteEnabled && !isQuizEnabled){
             Intent OffIntent = new Intent(context, OffButtonActivity.class);
             OffIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(OffIntent);
