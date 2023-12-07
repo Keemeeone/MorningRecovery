@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+
 import java.util.List;
 
 public class AlarmListAdapter extends BaseAdapter {
@@ -47,15 +48,11 @@ public class AlarmListAdapter extends BaseAdapter {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)context).deleteAlarm(alarm.getId());
+                ((MainActivity) context).deleteAlarm(alarm.getId());
             }
         });
 
         return convertView;
     }
 
-    public void updateData(List<Alarm> newAlarms) {
-        alarms = newAlarms;
-        notifyDataSetChanged();
-    }
 }

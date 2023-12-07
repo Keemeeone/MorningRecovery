@@ -1,4 +1,5 @@
 package com.cs407.morningrecovery;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.media.Ringtone;
 public class AlarmReceiver extends BroadcastReceiver {
     private static Ringtone ringtone;
     public static boolean alarmRing = false;
+
     @Override
     public void onReceive(Context context, Intent intent) {
         // Alarm sound get trigger.
@@ -21,17 +23,21 @@ public class AlarmReceiver extends BroadcastReceiver {
         Toast.makeText(context, "Alarm Ringing!", Toast.LENGTH_SHORT).show();
         // Check the switch state
         boolean isQuizEnabled = getQuizEnabledState(context);
+        boolean isQuoteEnabled = getQuoteEnabledState(context);
 
-        if (isQuizEnabled) {
+        if (isQuizEnabled && !isQuoteEnabled) {
             Intent quizIntent = new Intent(context, QuizActivity.class);
             quizIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(quizIntent);
-        } else {
+        } else if (isQuoteEnabled && !isQuizEnabled) {
             Intent quoteIntent = new Intent(context, QuoteActivity.class);
             quoteIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(quoteIntent);
+        } else {
+            Intent OffIntent = new Intent(context, OffButtonActivity.class);
+            OffIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(OffIntent);
         }
-
     }
 
     // Helper method to stop the alarm sound
@@ -57,9 +63,10 @@ public class AlarmReceiver extends BroadcastReceiver {
         return preferences.getBoolean(SettingActivity.KEY_QUIZ_ENABLED, true); // Default to true if not found
     }
 
-    private void startForegroundService(Context context) {
-        Intent serviceIntent = new Intent(context, QuizActivity.class);
-        context.startForegroundService(serviceIntent);
+    private boolean getQuoteEnabledState(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(SettingActivity.PREF_NAME, Context.MODE_PRIVATE);
+        return preferences.getBoolean(SettingActivity.KEY_QUOTE_ENABLED, true); // Default to true if not found
     }
+
 }
 

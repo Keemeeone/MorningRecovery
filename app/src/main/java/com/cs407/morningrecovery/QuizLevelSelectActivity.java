@@ -21,6 +21,7 @@ public class QuizLevelSelectActivity extends AppCompatActivity {
         // Finish the current activity if you don't want the user to come back to the quiz after seeing the quote
         finish();
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +49,6 @@ public class QuizLevelSelectActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
 
         // user select the type of quiz
@@ -86,8 +86,6 @@ public class QuizLevelSelectActivity extends AppCompatActivity {
                 moveToMainPage();
             }
         });
-
-
 
 
     }

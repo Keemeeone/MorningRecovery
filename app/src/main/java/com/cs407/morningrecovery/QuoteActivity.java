@@ -23,6 +23,7 @@ public class QuoteActivity extends AppCompatActivity {
             "The best way to predict the future is to create it."
             // Add more quotes as needed
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
