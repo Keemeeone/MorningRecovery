@@ -23,6 +23,9 @@
             android:name=".QuoteActivity"
             android:exported="false" />
         <activity
+            android:name=".OffButtonActivity"
+            android:exported="false" />
+        <activity
             android:name=".SettingActivity"
             android:exported="true" />
         <activity
@@ -33,7 +36,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoadingActivity"
+        <activity
+            android:name=".LoadingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,6 +45,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SetAlarmActivity" />
+
         <receiver
             android:name=".AlarmReceiver"
             android:enabled="true"
@@ -53,9 +58,11 @@
                 <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        <activity android:name=".CustomQuizActivity"/>
-        <activity android:name=".QuizActivity"/>
-        <activity android:name=".QuizLevelSelectActivity"
+
+        <activity android:name=".CustomQuizActivity" />
+        <activity android:name=".QuizActivity" />
+        <activity
+            android:name=".QuizLevelSelectActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

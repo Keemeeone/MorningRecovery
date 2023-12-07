@@ -1,9 +1,11 @@
 package com.cs407.morningrecovery;
+
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.ContentValues;
 import android.database.Cursor;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,15 +27,18 @@ public class AlarmDbHelper extends SQLiteOpenHelper {
     public AlarmDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
+
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_ENTRIES);
     }
+
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // This database is only a cache for online data, so its upgrade policy is
         // to simply to discard the data and start over
         db.execSQL(SQL_DELETE_ENTRIES);
         onCreate(db);
     }
+
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onUpgrade(db, oldVersion, newVersion);
     }
@@ -54,7 +59,7 @@ public class AlarmDbHelper extends SQLiteOpenHelper {
     public void deleteAlarm(int alarmId) {
         SQLiteDatabase db = this.getWritableDatabase();
         String selection = AlarmContract.AlarmEntry._ID + " = ?";
-        String[] selectionArgs = { String.valueOf(alarmId) };
+        String[] selectionArgs = {String.valueOf(alarmId)};
         db.delete(AlarmContract.AlarmEntry.TABLE_NAME, selection, selectionArgs);
     }
 
@@ -64,7 +69,7 @@ public class AlarmDbHelper extends SQLiteOpenHelper {
 
         Cursor cursor = db.query(
                 AlarmContract.AlarmEntry.TABLE_NAME,
-                new String[] {
+                new String[]{
                         AlarmContract.AlarmEntry._ID,
                         AlarmContract.AlarmEntry.COLUMN_NAME_HOUR,
                         AlarmContract.AlarmEntry.COLUMN_NAME_MINUTE,

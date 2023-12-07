@@ -71,9 +71,9 @@ public class SettingActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 isQuizEnabled = isChecked;
                 isChangesMade = true;
-                if(isQuizEnabled) {
+                if (isQuizEnabled) {
                     Toast.makeText(SettingActivity.this, "Quiz Enabled", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     Toast.makeText(SettingActivity.this, "Quiz Disabled", Toast.LENGTH_SHORT).show();
                 }
 
@@ -85,9 +85,9 @@ public class SettingActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 isQuoteEnabled = isChecked;
                 isChangesMade = true;
-                if(isQuoteEnabled) {
+                if (isQuoteEnabled) {
                     Toast.makeText(SettingActivity.this, "Quote Enabled", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     Toast.makeText(SettingActivity.this, "Quote Disabled", Toast.LENGTH_SHORT).show();
                 }
 
@@ -171,6 +171,7 @@ public class SettingActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
     private void setNightMode(boolean isEnabled) {
         isNightModeEnabled = isEnabled;
         isNightModeChanged = false;

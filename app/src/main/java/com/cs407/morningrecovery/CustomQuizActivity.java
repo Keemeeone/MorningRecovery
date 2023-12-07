@@ -32,7 +32,6 @@ public class CustomQuizActivity extends AppCompatActivity {
             }
         });
 
-
         questionEditText = findViewById(R.id.questionText);
         answerEditText = findViewById(R.id.answerText);
         Button saveButton = findViewById(R.id.button);
